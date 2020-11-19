@@ -1,0 +1,78 @@
+(machinelearning) fatimam@FatimaM:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.22-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| netflix            |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE UserIphone
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| UserIphone         |
+| information_schema |
+| mysql              |
+| netflix            |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE UserIphone
+Database changed
+
+mysql> SHOW tables;
+Empty set (0.00 sec)
+
+
+mysql> CREATE TABLE users_data(
+    ->     `User ID` int not null,
+    ->     `Gender` varchar (7),
+    ->     `Age` int,
+    ->     `EstimatedSalary` int,
+    ->     `Purchased` int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_UserIphone |
++----------------------+
+| users_data           |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> LOAD DATA LOCAL INFILE '/home/fatimam/Documents/formation_ia/P4 Regression logistique/UserData.csv'
+    -> INTO TABLE users_data
+    -> FIELDS TERMINATED BY ','
+    -> ENCLOSED BY '"'
+    -> LINES TERMINATED BY '\r\n'
+    -> IGNORE 1 LINES;
+
+
+
+
